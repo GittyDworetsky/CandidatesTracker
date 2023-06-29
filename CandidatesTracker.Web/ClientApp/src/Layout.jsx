@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useStatusCounts } from './StatusCountContext';
 
-const Layout = (props) => {
+const Layout = ({children}) => {
 
     const { pendingCount} = useStatusCounts();
     const { confirmedCount} = useStatusCounts();
@@ -54,7 +54,7 @@ const Layout = (props) => {
             </header>
 
             <div className="container" style={{ marginTop: 80 }}>
-                {props.children}
+                {children}
             </div>
 
         </div>

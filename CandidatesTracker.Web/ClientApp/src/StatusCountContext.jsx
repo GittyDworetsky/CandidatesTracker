@@ -22,8 +22,15 @@ const StatusCountContextComponent = ({ children }) => {
         refreshStatusCounts();
     }, []);
 
+    const value = {
+        pendingCount, 
+        confirmedCount, 
+        refusedCount, 
+        refreshStatusCounts
+    }
+
     return (
-        <StatusCountContext.Provider value={{pendingCount, confirmedCount, refusedCount, refreshStatusCounts}}>
+        <StatusCountContext.Provider value={value}>
             {children}
         </StatusCountContext.Provider>
     )

@@ -27,7 +27,6 @@ const App = () => {
                 <Route exact path='/confirmed' element={<Confirmed />} />
                 <Route exact path='/refused' element={<Refused />} />
                 <Route exact path='/viewDetails/:id' element={<ViewDetails />} />
-
             </Routes>
         </Layout>
     </StatusCountContextComponent>
