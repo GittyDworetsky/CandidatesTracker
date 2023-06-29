@@ -24,7 +24,6 @@ namespace CandidatesTracker.Data
         }
 
         public DbSet<Candidate> Candidates { get; set; }
-        public DbSet<CandidateCounts> CandidateCounts { get; set; }
 
 
     }

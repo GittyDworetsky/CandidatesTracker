@@ -7,9 +7,12 @@ import Pending from './Pending';
 import ViewDetails from './ViewDetails';
 import Confirmed from './Confirmed';
 import Refused from './Refused';
+import { createContext } from 'react';
+import Layout from './Layout';
+import { Route, Routes } from 'react-router-dom';
 
 
-const CountContext = createContext();
+const Context = createContext();
 
 const App = () => {
 
