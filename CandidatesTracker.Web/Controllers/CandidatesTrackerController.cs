@@ -1,4 +1,5 @@
 ﻿using CandidatesTracker.Data;
+using CandidatesTracker.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,9 @@ namespace CandidatesTracker.Web.Controllers
             _connectionString = configuration.GetConnectionString("ConStr");
         }
 
+        
+        [Route("getcounts")]
         [HttpGet]
-        [Route("/getcounts")]
         public CandidateCounts GetCounts()
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
@@ -24,7 +26,7 @@ namespace CandidatesTracker.Web.Controllers
         }
 
         [HttpPost]
-        [Route("/add")]
+        [Route("add")]
         public void Add(Candidate candidate)
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
@@ -32,32 +34,32 @@ namespace CandidatesTracker.Web.Controllers
         }
 
 
+        [Route("getpending")]
         [HttpGet]
-        [Route("/getpending")]
         public List<Candidate> GetPending()
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
             return repo.GetPending();
         }
 
+        [Route("getconfirmed")]
         [HttpGet]
-        [Route("/getconfirmed")]
         public List<Candidate> GetConfirmed()
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
             return repo.GetConfirmed();
         }
 
+        [Route("getrefused")]
         [HttpGet]
-        [Route("/getrefused")]
         public List<Candidate> GetRefused()
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
             return repo.GetRefused();
         }
 
+        [Route("getbyid")]
         [HttpGet]
-        [Route("/getbyid")]
         public Candidate GetById(int id)
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
@@ -65,11 +67,11 @@ namespace CandidatesTracker.Web.Controllers
         }
 
         [HttpPost]
-        [Route("/updateCandidateStatus")]
-        public void UpdateCandidateStatus(int id, RegistrationStatus status)
+        [Route("updateCandidateStatus")]
+        public void UpdateCandidateStatus(UpdateCandidateViewModel vm)
         {
             var repo = new CandidatesTrackerRepository(_connectionString);
-            repo.UpdateCandidateStatus(id, status);
+            repo.UpdateCandidateStatus(vm.Id, vm.Status);
 
         }
     }

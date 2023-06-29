@@ -31,9 +31,9 @@ const Pending = () => {
             </thead>
             <tbody>
                 {pendingList.map(i => {
-                    <tr>
+                    return <tr key={i.id}>
                         <td>
-                            <Link to={`/viewdetails/id=${i.id}`}>View Details</Link>
+                            <Link to={`/viewdetails/${i.id}`}>View Details</Link>
                         </td>
                         <td>{i.firstName}</td>
                         <td>{i.lastName}</td>

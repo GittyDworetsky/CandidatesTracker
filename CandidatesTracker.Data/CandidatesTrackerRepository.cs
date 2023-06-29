@@ -62,7 +62,7 @@ namespace CandidatesTracker.Data
         public void UpdateCandidateStatus(int id, RegistrationStatus status)
         {
             using var context = new CandidatesTrackerDataContext(_connectionString);
-            context.Database.ExecuteSqlInterpolated($"UPDATE People SET Status = {status} WHERE Id = {id}");
+            context.Database.ExecuteSqlInterpolated($"UPDATE Candidates SET Status = {status} WHERE Id = {id}");
 
         }
 

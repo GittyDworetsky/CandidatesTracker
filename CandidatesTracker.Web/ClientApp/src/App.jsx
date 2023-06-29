@@ -11,9 +11,6 @@ import Confirmed from './Confirmed';
 import Refused from './Refused';
 import ViewDetails from './ViewDetails';
 
-
-
-
 const App = () => {
 
 

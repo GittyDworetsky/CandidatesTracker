@@ -18,6 +18,7 @@ const Refused = () => {
     }, []);
 
 
+
     const onToggleColumn = () => {
         setShowColumn(!showColumn);
     };
@@ -25,7 +26,7 @@ const Refused = () => {
 
     return (
         <div>
-            <h1>Confirmed</h1>
+            <h1>Refused</h1>
             <div>
                 <button onClick={onToggleColumn} className="btn btn-success">Toggle Notes</button>
                 <table className="table table-hover table-striped table-bordered table-hover">
@@ -40,7 +41,7 @@ const Refused = () => {
                     </thead>
                     <tbody>
                         {refusedList.map(i => {
-                            <tr>
+                           return <tr>
                                 <td>{i.firstName}</td>
                                 <td>{i.lastName}</td>
                                 <td>{i.phoneNumber}</td>

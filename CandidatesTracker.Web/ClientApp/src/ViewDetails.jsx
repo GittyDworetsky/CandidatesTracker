@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStatusCounts } from "./StatusCountContext";
+import { useParams } from "react-router";
+import axios from "axios";
 
-const ViewDetails = ({ id }) => {
+
+const ViewDetails = () => {
 
     const [candidateToView, setCandidateToView] = useState({
         firstName: '',
@@ -13,6 +16,7 @@ const ViewDetails = ({ id }) => {
     });
     const [displayButton, setDisplayButton] = useState(true);
     const { refreshStatusCounts } = useStatusCounts();
+    const {id} = useParams();
 
 
     useEffect(() => {
@@ -25,8 +29,10 @@ const ViewDetails = ({ id }) => {
 
     }, []);
 
-    const onButtonClick = async (e) => {
-        await axios.post('/api/CandidatesTracker/updateCandidateStatus', { id, status: e.target.name });
+   
+
+    const onButtonClick = async (status) => {
+        await axios.post('/api/CandidatesTracker/UpdateCandidateStatus', { id, status });
         setDisplayButton(false);
         refreshStatusCounts();
     }
@@ -42,10 +48,10 @@ const ViewDetails = ({ id }) => {
                     <h4>Status: {candidateToView.status}</h4>
                     <h4>Notes:</h4>
                     <p>{candidateToView.notes}</p>
-                    <div>
-                        <button name='confirmed' onClick={onButtonClick} style={{ display: { displayButton } }} className="btn btn-primary">Confirm</button>
-                        <button name='refused' onClick={onButtonClick} style={{ display: { displayButton } }} className="btn btn-danger">Refuse</button>
-                    </div>
+                    {displayButton && <div>
+                        <button onClick={() => onButtonClick('Confirmed')} className="btn btn-primary">Confirm</button>
+                        <button  onClick={() => onButtonClick('Refused')} className="btn btn-danger">Refuse</button>
+                    </div>}
                 </div>
             </div>
         </div>

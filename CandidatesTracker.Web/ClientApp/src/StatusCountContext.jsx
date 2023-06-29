@@ -12,9 +12,10 @@ const StatusCountContextComponent = ({ children }) => {
     const refreshStatusCounts = async () => {
         
         const { data } = await axios.get('/api/CandidatesTracker/getcounts');
-        setPendingCount(data.Pending);
-        setConfirmedCount(data.Confirmed);
-        setRefusedCount(data.Refused);
+        const {pending, confirmed, refused } = data;
+        setPendingCount(pending);
+        setConfirmedCount(confirmed);
+        setRefusedCount(refused);
 
     }
 

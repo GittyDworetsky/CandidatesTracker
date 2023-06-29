@@ -40,7 +40,7 @@ const Confirmed = () => {
                     </thead>
                     <tbody>
                         {confirmedList.map(i => {
-                            <tr>
+                           return <tr>
                                 <td>{i.firstName}</td>
                                 <td>{i.lastName}</td>
                                 <td>{i.phoneNumber}</td>
