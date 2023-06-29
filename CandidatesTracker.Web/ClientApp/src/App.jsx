@@ -1,24 +1,24 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { StatusCountContextComponent } from './StatusCountContext';
+import Layout from './Layout';
 import Home from './Home';
 import AddCandidate from './AddCandidate';
 import Pending from './Pending';
-import ViewDetails from './ViewDetails';
 import Confirmed from './Confirmed';
 import Refused from './Refused';
-import { createContext } from 'react';
-import Layout from './Layout';
-import { Route, Routes } from 'react-router-dom';
+import ViewDetails from './ViewDetails';
 
 
-const Context = createContext();
+
 
 const App = () => {
 
 
     return (
-        <Context>
+        <StatusCountContextComponent>
         <Layout>
             <Routes>
                 <Route exact path='/' element={<Home />} />
@@ -30,7 +30,7 @@ const App = () => {
 
             </Routes>
         </Layout>
-    </Context>
+    </StatusCountContextComponent>
 
 
     )

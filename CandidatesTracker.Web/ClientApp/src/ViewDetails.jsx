@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Context } from './Context';
+import { useStatusCounts } from "./StatusCountContext";
 
 const ViewDetails = ({ id }) => {
 
     const [candidateToView, setCandidateToView] = useState();
     const [displayButton, setDisplayButton] = useState(true);
-    const { refreshStatusCounts } = Context();
+    const { refreshStatusCounts } = useStatusCounts();
 
 
     useEffect(() => {

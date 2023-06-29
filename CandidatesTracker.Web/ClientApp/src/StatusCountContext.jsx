@@ -3,12 +3,14 @@ import axios from 'axios';
 
 const StatusCountContext = createContext();
 
-const Context = ({ children }) => {
+const StatusCountContextComponent = ({ children }) => {
+
     const [pendingCount, setPendingCount] = useState(0);
     const [confirmedCount, setConfirmedCount] = useState(0);
     const [refusedCount, setRefusedCount] = useState(0);
 
     const refreshStatusCounts = async () => {
+        
         const { data } = await axios.get('/api/CandidatesTracker/getcounts');
         setPendingCount(data.Pending);
         setConfirmedCount(data.Confirmed);
@@ -21,9 +23,9 @@ const Context = ({ children }) => {
     }, []);
 
     return (
-        <OrderCountContext.Provider value={{pendingCount, confirmedCount, refusedCount, refreshStatusCounts}}>
+        <StatusCountContext.Provider value={{pendingCount, confirmedCount, refusedCount, refreshStatusCounts}}>
             {children}
-        </OrderCountContext.Provider>
+        </StatusCountContext.Provider>
     )
 
 }
@@ -32,4 +34,4 @@ const useStatusCounts = () => {
     return useContext(StatusCountContext);
 }
 
-export { Context , useStatusCounts };
+export { StatusCountContextComponent , useStatusCounts };
