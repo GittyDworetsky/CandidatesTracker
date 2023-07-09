@@ -66,6 +66,7 @@ namespace CandidatesTracker.Web.Controllers
             return repo.GetById(id);
         }
 
+
         [HttpPost]
         [Route("updateCandidateStatus")]
         public void UpdateCandidateStatus(UpdateCandidateViewModel vm)
