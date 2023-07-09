@@ -19,7 +19,6 @@ namespace CandidatesTracker.Data
                     .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true).Build();
 
                 return new CandidatesTrackerDataContext(config.GetConnectionString("ConStr"));
-            }
-        
+            }       
     }
 }
